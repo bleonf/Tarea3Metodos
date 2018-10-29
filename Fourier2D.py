@@ -1,5 +1,4 @@
 import numpy as np
 import matplotlib.pylab as plt
-from numpy import linalg 
+from numpy import linalg as lng 
 
-def fourier():

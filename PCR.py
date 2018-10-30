@@ -39,22 +39,24 @@ while (i<31):
 	i=i+1
 print "Los primeros 5 autovectores con autovalores 1.7x10**16, 155x10**6,10800, 1360 y 500 son los que tienen mayor covarianza y corresponden a las primeras 5 variables de los datos. "
 
-diagnostico=np.genfromtxt("WDBC.dat", usecols=(0,1))
+diagnostico=np.genfromtxt("WDBC.dat", usecols=(1), delimiter=",",invalid_raise = False)
 #lista con letras M para maligno y B para benigno
-diagnosticofinal=diagnostico[:,1]
+#diagnosticofinal=diagnostico[:,1]
 #binario es lista con 1 y 0 (booleano) correspondiente  las letras
 binario=np.zeros(569)
-
 i=0
 while (i<569):
-	if (diagnosticofinal[i]==B):
+	if (diagnostico[i]=="B"):
 		binario[i]=1
 		i=i+1
 	else:
 		i=i+1
-print diagnosticofinal
-print binario
 
+plt.figure("PC1,PC2")
+plt.scatter(datos[:,0],datos[:,1],c=datos[:,0])
+#diferente color segun su posicion en la grafica, no sabia como hacer para pasar de una lista de strings a binario y hacer eso para los datos de la figura
+plt.savefig("LeonBenjamin_PCA.pdf")
+print "Segun los resultados de la grafica, aunque no estoy seguro de cuales resultados son benignos y cuales malignos(ver comentarios),puedo suponer que la tendencia clara que hay entre PC1 y PC2 nos lleva a concluir que si se puede utilizar el metodo de PCA como medida de prevencion a pacientes de cancer aunque tal vez no como una medida absoluta para dignosticar."
 		
 
 

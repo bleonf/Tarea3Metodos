@@ -24,13 +24,14 @@ plt.show()
 
 i=0
 j=0
-while i<256:
-	if ((fouriertotal[i,0]>0.03) and (fouriertotal[i,0]<0.08)):
-		fouriertotal[i,:]=0
-		i=i+1
-	else:
-		i=i+1
-		
+while j<256:
+	while i<256:
+		if ((fouriertotal[i,j]>0.03) and (fouriertotal[i,j]<0.08)):
+			fouriertotal[i,j]=0
+			i=i+1
+		else:
+			i=i+1
+	j=j+1	
 plt.figure("Fourier Filtrada")
 plt.plot(frecuencia,fouriertotal)
 plt.savefig("LeonBenjamin_FT2D_filtrada.pdf")
@@ -40,7 +41,7 @@ plt.show()
 inversatotal=fft.ifft2(fouriertotal).real
 #Utilizamos parte real
 plt.figure("Imagen con filtro en  real")
-plt.imshow(inversatotal)
+plt.imshow(inversatotal,cmap="gray")
 plt.savefig("LeonBenjamin_Imagen_filtrada.pdf")
 plt.show()
 

@@ -11,12 +11,10 @@ realfourier=(fft.ifft2(img)).real
 #parte real
 imagfourier=(fft.ifft2(img)).imag
 #parte imaginara
-fouriertotal=(((realfourier**2)+(imagfourier))**(0.5))
-#magnitud de fourier
-plt.figure("Imagen")
-plt.imshow(img)
-plt.show()
 
+plt.figure("fig2-Real")
+plt.imshow(realfourier)
+plt.savefig("LeonBenjamin_FT2D.pdf")
 #Intento de filtro
 i=0
 j=0
@@ -27,10 +25,10 @@ while i<256:
 			j=j+1
 		else:
 			j=j+1
-		i=i+1
+	i=i+1
 plt.figure("fig2-Real")
 plt.imshow(realfourier)
-plt.show()
+plt.savefig("LeonBenjamin_FT2D_filtrada.pdf")
 
 inversareal=fft.ifft2(realfourier)
 
@@ -43,19 +41,24 @@ while i<256:
 			j=j+1
 		else:
 			j=j+1
-		i=i+1
-plt.figure("fig3-imag")
-plt.imshow(imagfourier)
-plt.show()
+	i=i+1
+######################################
+#plt.figure("fig3-imag")
+#plt.imshow(imagfourier)
+#plt.show()
+#########################################
 
+
+np.clip(imagfourier,-0.001,0.001)
+np.clip(realfourier,-0.001,0.001)
+inversareal=fft.ifft2(realfourier)
 inversaimag=fft.ifft2(imagfourier)
 
-fouriertotal=(imagfourier*1j)+realfourier
-inversatotal=fft.ifft2(fouriertotal).real
+inversatotal=fft.ifft2(realfourier).real
 #Utilizamos parte real
 plt.figure("Imagen con filtro en  real")
 plt.imshow(inversatotal)
-plt.show()
+plt.savefig("LeonBenjamin_Imagen_filtrada.pdf")
 
 #no supe como aplicar el filtro, ya que al hacer fourier me da con numeros complejos
 

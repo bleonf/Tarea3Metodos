@@ -14,6 +14,9 @@ nsignal=len(signalx)
 fsignal=np.fft.fftfreq(nsignal,(signalx[-1]-signalx[-2]))
 print "Se utiliza el paquete fft.fftfreq de numpy con un dt de la diferencia de las dos frcuencias mas grandes de los datos"
 
+print (fsignal)
+print (f1signal)
+
 incompx=b[:,0]
 incompy=b[:,1]
 nincomp=len(incompx)
@@ -40,6 +43,7 @@ while (i<512):
 plt.figure("fig2")	
 plt.plot(np.abs(fsignal),(fouriersignal))
 plt.savefig("LeonBenjamin_TF.pdf")
+
 
 print "las frecuencias principales se encuentran en 210 ,138 ,245 y 388 hz"
 
@@ -99,12 +103,14 @@ plt.savefig("LeonBenjamin_TF_interpola.pdf")
 
 print "En la transformada de las interpolaciones falta un pico completo que en la transformada de la senhal es el tercero mas grande."
 
+#arreglos en blanco para ser llenados
 cubica1000=np.zeros(512)
 cubica500=np.zeros(512)
 cuad1000=np.zeros(512)
 cuad500=np.zeros(512)
 signal500=np.zeros(512)
 
+#funcion para aplicar cualquier filtro a cualquiera de los arreglos
 def filtro(signal,arreglo,freq):
 	i=0
 	while (i<512):

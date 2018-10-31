@@ -16,7 +16,8 @@ plt.plot(frecuencia,fourier)
 plt.savefig("LeonBenjamin_FT2D.pdf")
 
 
-#filtro, quitamos la locacion exacta en las frecuencias donde se hallaba el ruido	
+#filtro, quitamos la locacion exacta en las frecuencias donde se hallaba el ruido
+#los tres errores que bota el ejercicio son señales de precaucion al usuario por que no estamos teniendo en cuenta la parte imaginaria de la transformada	
 i=0
 while i<256:
 		if ((abs(frecuencia[i].real)>0.24 and abs(frecuencia[i].real)<0.26)or(abs(frecuencia[i].real)>0.038 and abs(frecuencia[i].real)<0.043)):

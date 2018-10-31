@@ -21,6 +21,8 @@ incompx=b[:,0]
 incompy=b[:,1]
 nincomp=len(incompx)
 
+print "Segun lo que vemos en la grafica de los datos incompletos y en el archivo de datos podemos suponer que no podemos hacer la transformada de fourier para esos datos por la cantidad de datos o por la precision de dichos datos ya que no hay manera de encontrar funciones periodicas con frecuencias que le den exactamente a los decimales. Tambien se puede deber a la magnitud de los datos ya que al hacer uso de la exponente en la definicion de la transformada podemos encontrarnos con multiples datos que el computador procesara como iguales cuando en realidad no lo son."
+
 plt.figure("fig1")
 plt.plot(signalx,signaly)
 plt.savefig("LeonBenjamin_signal.pdf")
